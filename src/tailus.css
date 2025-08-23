@@ -1,7 +1,56 @@
 @import 'tailwindcss';
+@import url('css/switzer.css');
+@import "preline/variants.css";
+@source "../../node_modules/preline/dist/*.js";
 
 @theme {
-    --color-primary : var(--color-indigo-600);
+    --color-primary : var(--color-white);
     --color-secondary : var(--color-orange-600);
     --color-info : var(--color-blue-600);
+}
+/* Adds pointer cursor to buttons */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* Defaults hover styles on all devices */
+@custom-variant hover (&:hover);
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2s infinite;
+}
+.button-ripple {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    translate: -50% -50%;
+    opacity: 0;
+    border-radius: 50%;
+    background-color: var(--ripple-color, rgba(255, 255, 255, .15));
+    width: var(--ripple-size, 240px);
+    height: var(--ripple-size, 240px);
 }
