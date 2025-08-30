@@ -53,3 +53,67 @@
     width: var(--ripple-size, 240px);
     height: var(--ripple-size, 240px);
 }
+
+@keyframes sweepa {
+      0% {
+        background-position: -100% 0; /* Start the gradient off-screen to the left */
+      }
+      100% {
+        background-position: 100% 0; /* End the gradient off-screen to the right */
+      }
+    }
+
+
+light-sweep {
+        background: #111 -webkit-linear-gradient(left, #111, #fff) no-repeat 0 0 / 30px;
+        background-clip: text;
+        -webkit-text-fill-color: rgba(255, 255, 255, .2);
+        animation: sweepa 2.5s ease-in infinite;
+      }
+
+.sweeplight:after{
+        content:'';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transform: skew(-30deg);
+        background: rgba(255,255,255,.5);
+        background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 10%,
+        rgba(255, 255, 255, .5) 40%,
+        rgba(255, 255, 255, .5) 50%,
+        rgba(255, 255, 255, 0) 80%
+        );
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in;
+        animation-name: sweep;
+
+
+      }
+
+      @keyframes gradient-sweep {
+	0% {
+		background-position: -400% 0%;
+	}
+	100% {
+		background-position: 0% 0%;
+	}
+      }
+
+
+      @keyframes sweep {
+        0% {
+          left:-180px;
+        }
+
+        60% {
+          left:180px;
+        }
+
+        100% {
+          left:180px;
+        }
+      }
